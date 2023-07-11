@@ -5,9 +5,29 @@ const tasksCounter = document.getElementById('tasks-counter');
 
 console.log('Working');
 
+// Add to dom function 
+function addTaskToDom(task){
+    const li = document.createElement('li');
+
+    li.innerHTML = `
+    <input type="checkbox" id="${task.id}" ${task.done ? "checked" : ''} class="custom-checkbox">
+    <label for="${task.id}">${task.text}</label>
+    <img src="/img/trash-fill.svg" class="delete" data-id="${task.id}" />
+    `;
+    taskList.append(li);
+}
 
 // render Function
-function renderList() { }
+function renderList() {
+
+    
+    taskList.innerHTML = "";
+
+    for(let i = 0; i < tasks.length; i++){
+        addTaskToDom(tasks[i]);
+    }
+    tasksCounter.innerHTML = tasks.length;
+}
 
 // Task Complete Task Function
 function markTaskAsComplete(taskId) {
