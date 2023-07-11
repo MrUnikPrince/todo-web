@@ -1,4 +1,4 @@
-const tasks = [];
+let tasks = [];
 const taskList = document.getElementById('list');
 const addTaskInput = document.getElementById('add');
 const tasksCounter = document.getElementById('tasks-counter');
@@ -10,10 +10,19 @@ console.log('Working');
 function renderList() { }
 
 // Task Complete Task Function
-function markTaskAsComplete(taskId) { }
+function markTaskAsComplete(taskId) {
+    
+}
 
 // Delete Task function
-function deleteTask(taskId) { }
+function deleteTask(taskId) {
+    const newTasks = tasks.filter(function(task){
+        return task.is !== taskID;
+    });
+    tasks = newTasks;
+    renderList();
+    showNotification("task deleted successfully");
+}
 
 // Add task Funtion
 function addTask(task) {
