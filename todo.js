@@ -32,7 +32,7 @@ function renderList() {
 // Task Complete Task Function
 function markTaskAsComplete(taskId) {
     const task = tasks.filter(function (task) {
-        return taskID === taskId
+        return task.Id === taskId
     })
 
     if (task.length > 0) {
@@ -50,7 +50,7 @@ function markTaskAsComplete(taskId) {
 // Delete Task function
 function deleteTask(taskId) {
     const newTasks = tasks.filter(function (task) {
-        return task.id !== taskID;
+        return task.id !== taskId;
     });
     tasks = newTasks;
     renderList();
@@ -72,6 +72,8 @@ function addTask(task) {
 function showNotification(text) {
     alert(text);
 }
+
+
 // addTaskInput.addEventListener('keyup', handleInputKeyPress);
 function handleInputKeyPress(e) {
     if (e.key == 'Enter') {
@@ -92,4 +94,23 @@ function handleInputKeyPress(e) {
         addTask(task);
     }
 }
+function handleClickListener(e){
+    const target = e.target;
+
+    if(target.className == 'delete'){
+        const taskId = target.dataset.id;
+        deleteTask(taskId);
+        return;
+    }else if(target.className == 'custom-checkbox'){
+        const taskId = target.id;
+        markTaskAsComplete(taskId);
+        return;
+
+    }
+}
+
+function initializeApp(){
 addTaskInput.addEventListener('keyup', handleInputKeyPress);
+document.addEventListener('click', handleClickListener);
+}
+initializeApp();
