@@ -11,13 +11,13 @@ function renderList() { }
 
 // Task Complete Task Function
 function markTaskAsComplete(taskId) {
-    
+
 }
 
 // Delete Task function
 function deleteTask(taskId) {
     const newTasks = tasks.filter(function(task){
-        return task.is !== taskID;
+        return task.id !== taskID;
     });
     tasks = newTasks;
     renderList();
