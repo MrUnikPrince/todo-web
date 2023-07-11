@@ -7,27 +7,35 @@ console.log('Working');
 
 
 // render Function
-function renderList () {}
+function renderList() { }
 
 // Task Complete Task Function
-function markTaskAsComplete (taskId) {}
+function markTaskAsComplete(taskId) { }
 
 // Delete Task function
-function deleteTask (taskId) {}
+function deleteTask(taskId) { }
 
 // Add task Funtion
-function addTask (task) {}
+function addTask(task) {
+    if (task) {
+        tasks.push(task);
+        renderList();
+        showNotification("Task added Successfully");
+        return;
+    }
+    showNotification("Task can not be added");
+}
 
 // Show Notification Function
 function showNotification(text) {
     alert(text);
 }
 
-function handleInputKeyPress(e){
-    if(e.key === 'Enter'){
+function handleInputKeyPress(e) {
+    if (e.key === 'Enter') {
         const text = e.target.value;
-    }    
-    if(!text){
+    }
+    if (!text) {
         showNotification("Task can not be empty");
         return;
     }
